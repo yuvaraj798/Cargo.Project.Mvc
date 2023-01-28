@@ -1,0 +1,48 @@
+﻿@model IEnumerable<CustomerViewModel>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<div class="row">
+    <div class="col-md-7">
+        <div class="row">
+            <div class="col">
+                <h2>List of Customers</h2>
+            </div>
+            <div class="col text-end">
+                <a asp-controller="Customers" asp-action="Create" class="btn btn-warning">Create new Customer</a>
+            </div>
+        </div>
+        <div class="row">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>CustName</th>
+                        <th>CustAddress</th>
+                        <th>CustPhNo</th>
+                        <th>CustEmail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.CustName</td>
+                            <td>@item.CustAddress</td>
+                            <td>@item.CustPhNo</td>
+                            <td>@item.CustEmail</td>
+
+                            <td>
+                                <a asp-controller="Customers" asp-action="Details" asp-route-id="@item.CustId">Details</a> |
+                                <a asp-controller="Customers" asp-action="Edit" asp-route-id="@item.CustId">Edit</a> |
+                                <a asp-controller="Customers" asp-action="Delete" asp-route-id="@item.CustId">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
